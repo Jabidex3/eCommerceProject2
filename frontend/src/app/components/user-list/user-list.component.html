@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">Welcome Admin!</mat-toolbar>
+
+<h1 style="text-align: center;">Add a New User:</h1>
+<div style="width: 40%; margin: auto; ">
+    <mat-form-field style="width: 30%;margin: 2%;">
+        <input matInput placeholder="example@gmail.com" />
+    </mat-form-field>
+    <mat-form-field style="width: 30%;margin: 2%;">
+        <input matInput placeholder="password" />
+    </mat-form-field>
+    <button color="primary">
+        Add User
+    </button>
+    
+</div>
+<hr />
+<h1 style="text-align: center;">User List</h1>
+<table style="width: 50%; margin: auto; text-align: center;" border=1>
+    <tr>
+        <th>User Id</th>
+        <th>User Email</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of users$ | async">
+        <td>{{user.id}}</td>
+        <td>{{user.email}}</td>
+        <td><button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+    </tr>
+</table>
+<!-- <mat-card style="width: 50%; margin: auto;">
+
+
+    <mat-list>
+        
+        <mat-list-item *ngFor="let user of users$ | async">
+            <span style="font-weight: bold;">{{user.id}}. {{user.email}} {{user.password}}</span>
+            <span style="position: absolute; right: 0;">
+                <button mat-icon-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </span>
+        </mat-list-item>
+    </mat-list>
+</mat-card> -->

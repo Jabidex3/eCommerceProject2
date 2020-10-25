@@ -11,9 +11,18 @@ exports.getAllUsers = async (req, res, next) =>{
 };
 
 exports.registerUser = async (req, res, next) =>{
+    const email = req.body.email;
+    const password = req.body.password;
+
+  
     try{
-        const postUser = await User.post(req.body.email,req.body.password);
-        res.status(201).json(postUser);
+        const userDetails = {
+            email:email,
+            password:password,
+        };
+    
+        const postUser = await User.post(userDetails);
+        res.status(201).json({message:'user created'});
     } catch{
         console.log('Error');
     }

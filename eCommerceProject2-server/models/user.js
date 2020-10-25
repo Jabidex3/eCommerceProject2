@@ -14,10 +14,10 @@ module.exports = class User{
         return db.execute('SELECT * FROM user');
     }
 
-    static post(email,password) {
+    static post(user) {
         // console.log(email);
         // console.log(password);
-        return db.execute('Insert into user (email, password) Values (?,?)', [email,password]);
+        return db.execute('Insert into user (email, password) Values (?,?)', [user.email,user.password]);
     }
 
     static update(id,email,password){

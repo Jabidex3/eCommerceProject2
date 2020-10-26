@@ -91,12 +91,8 @@ exports.putUser = async (req, res, next) =>{
 };
 
 exports.deleteUser = async (req, res, next) =>{
-    const id = req.body.id;
     try{
-        const userDetails = {
-            id:id
-        };
-        const deleteResponse = await User.delete(userDetails);
+        const deleteResponse = await User.delete(req.params.id);
         res.status(200).json(deleteResponse);
     } catch{
         console.log('Error');

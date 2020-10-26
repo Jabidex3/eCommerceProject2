@@ -25,7 +25,7 @@ module.exports = class User{
         return db.execute('update user set email = ? , password = ?, role = ? where id = ?', [user.email,user.password,user.role, user.id]);
     }
 
-    static delete(user){
-        return db.execute('delete from user where id = ?', [user.id]);
+    static delete(id){
+        return db.execute('delete from user where id = ?', [id]);
     }
 };

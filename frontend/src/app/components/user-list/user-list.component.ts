@@ -113,4 +113,8 @@ export class UserListComponent implements OnInit {
     
   }
   
+  delete(id:number):void{
+    this.userListCrudService.delete(id).subscribe();
+    window.location.reload();
+  }
 }

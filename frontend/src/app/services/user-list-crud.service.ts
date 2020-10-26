@@ -12,6 +12,7 @@ export class UserListCrudService {
 
   private url = "http://localhost:3000/all";
   private urltwo = "http://localhost:3000/register";
+  
 
   httpOptions: {headers: HttpHeaders} = {
     headers: new HttpHeaders({"Content-Type": "application/json"})
@@ -29,5 +30,10 @@ export class UserListCrudService {
 
   post(user: Omit<User, "id">): Observable<User>{
     return this.http.post<User>(this.urltwo,user,this.httpOptions).pipe(first());
+  }
+
+  delete(id:number):Observable<any>{
+    const urlthree = `http://localhost:3000/user/${id}`;
+    return this.http.delete<User>(urlthree,this.httpOptions);
   }
 }

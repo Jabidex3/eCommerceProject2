@@ -51,7 +51,7 @@
         <td>{{user.id}}</td>
         <td>{{user.email}}</td>
         <td><button mat-icon-button color="warn">
-            <mat-icon>delete</mat-icon>
+            <mat-icon (click)= "delete(user.id)">delete</mat-icon>
         </button>
         </td>
     </tr>

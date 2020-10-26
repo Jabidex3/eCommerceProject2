@@ -1,13 +1,14 @@
 mat-toolbar{
     display: flex;
     justify-content: space-between;
-    padding: 0 50px;
+    //padding: 0 50px;
     a{
+        color:yellow;
         text-decoration: none;
         margin-left: 20px;
-        border: 1px;
+        //border: 1px;
     }
     a:hover{
-        color: white;
+        color: black;
     }
 }

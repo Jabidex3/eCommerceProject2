@@ -16,7 +16,7 @@
 <button (click)="addUserfunc()" style="margin-top: 2%;margin-bottom: 2%;"> Add New User</button>
 <form [formGroup]="newUserForm" (ngSubmit)="post()" novalidate *ngIf="addUser">
     <h1 style="text-align: center;">Add a New User:</h1>
-    <mat-form-field style="width: 30%;margin-left: 10%;">
+    <mat-form-field style="width: 30%;">
         <mat-label>Email</mat-label>
         <input #emailInp matInput placeholder="example@gmail.com" formControlName="email" />
     </mat-form-field>
@@ -24,9 +24,15 @@
         <mat-label>Password</mat-label>
         <input #pwInp matInput placeholder="password" formControlName="password"/>
     </mat-form-field>
+    <mat-form-field style="width: 30%;margin: 2%;">
+        <mat-label>Role</mat-label>
+        <input #roleInp matInput placeholder="user or admin" formControlName="role"/>
+    </mat-form-field>
     <button type ="submit">
         <span>Add user</span>
     </button>
+    <div #unsuccessPost *ngIf="div1" style="color: red;">Invalid Inputs! Try Again!</div>
+    <div #successPost *ngIf="div2" style="color: green;">You have successfully created the new user!</div>
 </form>
 
 <hr />

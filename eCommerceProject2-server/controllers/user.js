@@ -13,12 +13,13 @@ exports.getAllUsers = async (req, res, next) =>{
 exports.registerUser = async (req, res, next) =>{
     const email = req.body.email;
     const password = req.body.password;
-
+    const role = req.body.role;
   
     try{
         const userDetails = {
             email:email,
             password:password,
+            role:role,
         };
     
         const postUser = await User.post(userDetails);
@@ -29,8 +30,16 @@ exports.registerUser = async (req, res, next) =>{
 };
 
 exports.loginUser = async (req, res, next) =>{
+    const email = req.body.email;
+    const password = req.body.password;
+    const role = req.body.role;
     try{
-        const login = await User.find(req.body.email,req.body.password);
+        const userDetails = {
+            email:email,
+            password:password,
+            role:role,
+        };
+        const login = await User.find(userDetails);
         if(login[0].length>0){ //check if there was any matches
             res.status(202).json(login);
         }
@@ -44,8 +53,16 @@ exports.loginUser = async (req, res, next) =>{
 };
 
 exports.getUser = async (req, res, next) =>{ //logged in already
+    const email = req.body.email;
+    const password = req.body.password;
+    const role = req.body.role;
     try{
-        const [userFound] = await User.find(req.body.email,req.body.password);
+        const userDetails = {
+            email:email,
+            password:password,
+            role:role,
+        };
+        const [userFound] = await User.find(userDetails);
         res.status(200).json(userFound);
         
     } catch{
@@ -54,8 +71,19 @@ exports.getUser = async (req, res, next) =>{ //logged in already
 };
 
 exports.putUser = async (req, res, next) =>{
+    const id = req.body.id;
+    const email = req.body.email;
+    const password = req.body.password;
+    const role = req.body.role;
+
     try{
-        const putResponse = await User.update(req.body.id,req.body.email,req.body.password);
+        const userDetails = {
+            id:id,
+            email:email,
+            password:password,
+            role:role,
+        };
+        const putResponse = await User.update(userDetails);
         res.status(200).json(putResponse);
     } catch{
         console.log('Error');
@@ -63,8 +91,12 @@ exports.putUser = async (req, res, next) =>{
 };
 
 exports.deleteUser = async (req, res, next) =>{
+    const id = req.body.id;
     try{
-        const deleteResponse = await User.delete(req.body.id);
+        const userDetails = {
+            id:id
+        };
+        const deleteResponse = await User.delete(userDetails);
         res.status(200).json(deleteResponse);
     } catch{
         console.log('Error');

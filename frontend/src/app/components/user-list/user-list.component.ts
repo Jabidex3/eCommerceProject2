@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { UserListCrudService } from 'src/app/services/user-list-crud.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-user-list',
@@ -23,7 +24,8 @@ export class UserListComponent implements OnInit {
   createFormGroup():FormGroup{
     return new FormGroup({
       email: new FormControl("",[Validators.required]),
-      password: new FormControl("",[Validators.required])
+      password: new FormControl("",[Validators.required]),
+      role: new FormControl("",[Validators.required])
       //, role: new FormControl("user")
     });
   }
@@ -41,9 +43,40 @@ export class UserListComponent implements OnInit {
   //   this.userListCrudService.post(inpOne,inpTwo);
   // }
 
+  div1:boolean=false;
+  div2:boolean=false;
   post():void{
-    console.log(this.newUserForm.value);
-    this.userListCrudService.post(this.newUserForm.value).subscribe();
+    const inpOne = this.newUserForm.controls['email'].value.trim()
+    const inpTwo = this.newUserForm.controls['password'].value.trim()
+    const inpThree = this.newUserForm.controls['role'].value.trim()
+
+    if(!inpOne || !inpTwo || !inpThree){
+      return;
+    }
+
+    if(inpThree.toLowerCase() === "user" || inpThree.toLowerCase() === "admin"){
+      console.log(this.newUserForm.value);
+      console.log(inpOne);
+      console.log(inpTwo);
+      console.log(inpThree);
+      this.userListCrudService.post(this.newUserForm.value).subscribe();
+      this.div2=true;
+      if(this.div1==true){
+        this.div1 = false;
+      }
+    }
+    else{
+      console.log("invalid input");
+      console.log(this.newUserForm.value);
+      console.log(inpOne);
+      console.log(inpTwo);
+      console.log(inpThree);
+      this.div1=true;
+      if(this.div2==true){
+        this.div2 = false;
+      }
+    }
+    //this.userListCrudService.post(this.newUserForm.value).subscribe();
     //window.location.reload();
   }
 

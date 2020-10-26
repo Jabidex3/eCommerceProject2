@@ -24,6 +24,7 @@ export class UserListComponent implements OnInit {
     return new FormGroup({
       email: new FormControl("",[Validators.required]),
       password: new FormControl("",[Validators.required])
+      //, role: new FormControl("user")
     });
   }
 
@@ -41,8 +42,42 @@ export class UserListComponent implements OnInit {
   // }
 
   post():void{
-    //console.log(this.newUserForm.value);
+    console.log(this.newUserForm.value);
     this.userListCrudService.post(this.newUserForm.value).subscribe();
-    window.location.reload();
+    //window.location.reload();
   }
+
+  // div1:boolean=false;
+  // div1func(){
+  //   if(this.div1==false){
+  //     this.div1=true;
+  //   }
+  //   else{
+  //     this.div1=false;
+  //   }
+    
+  // }
+
+  addUser:boolean=false;
+  addUserfunc(){
+    if(this.addUser==false){
+      this.addUser=true;
+    }
+    else{
+      this.addUser=false;
+    }
+    
+  }
+
+  showUser:boolean=false;
+  showUserfunc(){
+    if(this.showUser==false){
+      this.showUser=true;
+    }
+    else{
+      this.showUser=false;
+    }
+    
+  }
+  
 }

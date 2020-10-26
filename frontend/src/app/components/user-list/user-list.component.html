@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">Welcome Admin!</mat-toolbar>
 
-<h1 style="text-align: center;">Add a New User:</h1>
+
 <!-- <div style="width: 40%; margin: auto; ">
     <mat-form-field style="width: 30%;margin: 2%;">
         <input #emailInp matInput placeholder="example@gmail.com" />
@@ -13,18 +13,27 @@
     </button>
     
 </div> -->
-<form [formGroup]="newUserForm" (ngSubmit)="post()" novalidate>
-    <mat-form-field style="width: 30%;margin: 2%;">
+<button (click)="addUserfunc()" style="margin-top: 2%;margin-bottom: 2%;"> Add New User</button>
+<form [formGroup]="newUserForm" (ngSubmit)="post()" novalidate *ngIf="addUser">
+    <h1 style="text-align: center;">Add a New User:</h1>
+    <mat-form-field style="width: 30%;margin-left: 10%;">
+        <mat-label>Email</mat-label>
         <input #emailInp matInput placeholder="example@gmail.com" formControlName="email" />
     </mat-form-field>
     <mat-form-field style="width: 30%;margin: 2%;">
+        <mat-label>Password</mat-label>
         <input #pwInp matInput placeholder="password" formControlName="password"/>
     </mat-form-field>
     <button type ="submit">
         <span>Add user</span>
     </button>
 </form>
+
 <hr />
+<!-- <div #testerOne *ngIf="div1" style="background-color: blue;">Hi</div>
+<button (click)="div1func()"> test</button> -->
+<button (click)="showUserfunc()" style="margin-top: 2%;margin-bottom: 2%;"> Show/Hide User List</button>
+<div *ngIf="showUser">
 <h1 style="text-align: center;">User List</h1>
 <table style="width: 50%; margin: auto; text-align: center;" border=1>
     <tr>
@@ -41,6 +50,7 @@
         </td>
     </tr>
 </table>
+</div>
 <!-- <mat-card style="width: 50%; margin: auto;">
 
 

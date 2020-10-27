@@ -1,1 +1,35 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="checkUser()" novalidate>
+    <h1>Login Form:</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input #emailInp matInput placeholder="example@gmail.com" formControlName="email" />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input #pwInp matInput placeholder="password" formControlName="password"/>
+    </mat-form-field>
+    <br>
+    <button type ="submit">
+        <span>Log In</span>
+    </button>
+    <button type="reset" value="Reset">Cancel</button>
+</form>
+
+<div>
+    Note: Double Click The Login Function in order to login!
+</div>
+<!-- <div>
+Length: {{(user$ | async)?.length}}
+</div>
+<table style="width: 50%; margin: auto; text-align: center;" border=1>
+    <tr>
+        <th>User Id</th>
+        <th>User Email</th>
+    </tr>
+    <tr *ngFor="let u of user$ | async">
+        
+        <td>{{u.id}}</td>
+        <td>{{u.email}}</td>
+    </tr>
+</table> -->

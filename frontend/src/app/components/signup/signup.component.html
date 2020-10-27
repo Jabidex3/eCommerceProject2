@@ -1,1 +1,26 @@
-<p>signup works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="post()" novalidate>
+    <h1>Register Yourself:</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input #emailInp matInput placeholder="example@gmail.com" formControlName="email" />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input #pwInp matInput placeholder="password" formControlName="password"/>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Re-Enter Password</mat-label>
+        <input #repwInp matInput placeholder="reenter password" formControlName="reenterPassword"/>
+    </mat-form-field>
+    <br>
+    <!-- <mat-form-field>
+        <mat-label>Role</mat-label>
+        <input #roleInp matInput placeholder="user or admin" formControlName="role"/>
+    </mat-form-field> -->
+    <button type ="submit">
+        <span>Register</span>
+    </button>
+    <button type="reset" value="Reset">Cancel</button>
+</form>

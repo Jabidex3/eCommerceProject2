@@ -30,21 +30,22 @@ exports.registerUser = async (req, res, next) =>{
 };
 
 exports.loginUser = async (req, res, next) =>{
-    const email = req.body.email;
-    const password = req.body.password;
-    const role = req.body.role;
+    const email = req.params.email;
+    const password = req.params.password;
+   // const role = req.body.role;
     try{
         const userDetails = {
             email:email,
             password:password,
-            role:role,
+         //   role:role,
         };
         const login = await User.find(userDetails);
+        const [loginTwo] = await User.find(userDetails);
         if(login[0].length>0){ //check if there was any matches
-            res.status(202).json(login);
+            res.status(202).json(loginTwo);
         }
         else{
-            res.status(404).json(login);
+            res.status(404).json(loginTwo);
         }
         
     } catch{

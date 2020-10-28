@@ -117,4 +117,8 @@ export class UserListComponent implements OnInit {
     this.userListCrudService.delete(id).subscribe();
     window.location.reload();
   }
+
+  deleteSessionUserInfo():void{
+    sessionStorage.removeItem('currentUser');
+  }
 }

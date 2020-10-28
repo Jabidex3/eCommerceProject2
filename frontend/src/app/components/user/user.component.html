@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+    <span>Ecommerce Application V1</span>
+    <span>
+        <!-- <a routerLink="/">Home</a> -->
+
+        <a routerLink="/user">User</a>
+
+        <a (click)="deleteSessionUserInfo()" routerLink="/login">Logout</a>
+    </span>
+</mat-toolbar>
+<!-- <div id="last"></div>
+<button (click) = "displayPerson()">Click</button> -->
+
+
+
+<h1 style="text-align: center; margin-top: 15px;">User Data:</h1>
+<form [formGroup]="updateUserForm" (ngSubmit)="update()" novalidate>
+    <table style="width: 50%; margin: auto; text-align: center;" border=1>
+        <tr>
+            <th>User Id</th>
+            <th>User Email</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr>
+<td>
+
+
+        <input style="text-align: center;" #idInp  formControlName="id" disabled/>
+
+</td>
+<td>
+
+
+        <input  style="text-align: center;" #emailInp  formControlName="email" disabled/>
+
+</td>
+<td>
+
+
+        <input style="text-align: center;" #pwInp formControlName="password"/>
+
+</td>
+<td>
+
+
+        <input  style="text-align: center;" #roleInp formControlName="role" disabled/>
+
+</td>
+<td>
+    <button type ="submit">
+        <span>Update</span>
+    </button>
+</td>
+<td><button mat-icon-button color="warn">
+    <mat-icon (click)= "delete()">delete</mat-icon>
+</button>
+</td>
+        </tr>
+
+    
+    
+    
+    
+    
+    </table>
+</form>

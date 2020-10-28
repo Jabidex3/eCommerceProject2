@@ -50,16 +50,14 @@ export class LoginComponent implements OnInit {
     console.log(inpTwo);
     this.user$ = this.userListCrudService.checkUser(inpOne,inpTwo);
 
-     localStorage.setItem('currentUserEmail', inpOne);
-     localStorage.setItem('currentUserPass', inpTwo);
+    //  localStorage.setItem('currentUserEmail', inpOne);
+    //  localStorage.setItem('currentUserPass', inpTwo);
 
    // this.user$ .forEach(value => console.​log(value));
    // this.user$ .forEach(value => console.​log([value][0][0]));
-    this.user$ .forEach(value => localStorage.setItem('currentUser',JSON.stringify([value][0][0])));
-    var tester = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(tester.email);
-    console.log(tester.password);
-    console.log(tester.role);
+    this.user$ .forEach(value => sessionStorage.setItem('currentUser',JSON.stringify([value][0][0])));
+    var tester = JSON.parse(sessionStorage.getItem('currentUser'));
+
     if(tester==null){
       console.log('invalid credentials');
     }
@@ -68,7 +66,7 @@ export class LoginComponent implements OnInit {
       //localStorage.removeItem('currentUser');
     }
     else{
-      this.router.navigate([""]); //localStorage.removeItem('currentUser');
+      this.router.navigate(["user"]); //localStorage.removeItem('currentUser');
     }
   }
 

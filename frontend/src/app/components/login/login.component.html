@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <form [formGroup]="loginForm" (ngSubmit)="checkUser()" novalidate>
     <h1>Login Form:</h1>
     <mat-form-field appearance="fill">
@@ -17,7 +18,7 @@
 </form>
 
 <div>
-    Note: Double Click The Login Function in order to login!
+    Note: Double Click The Login Button after entering in your credentials in order to login!
 </div>
 <!-- <div>
 Length: {{(user$ | async)?.length}}

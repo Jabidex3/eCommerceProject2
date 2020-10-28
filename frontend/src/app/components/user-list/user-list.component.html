@@ -1,5 +1,13 @@
-<mat-toolbar color="primary">Welcome Admin!</mat-toolbar>
+<mat-toolbar color="primary">
+    <span>Ecommerce Application V1</span>
+    <span>
+        <!-- <a routerLink="/">Home</a> -->
 
+        <a routerLink="/admin">Admin</a>
+
+        <a (click)="deleteSessionUserInfo()" routerLink="/login">Logout</a>
+    </span>
+</mat-toolbar>
 
 <!-- <div style="width: 40%; margin: auto; ">
     <mat-form-field style="width: 30%;margin: 2%;">
@@ -13,6 +21,7 @@
     </button>
     
 </div> -->
+<!-- <h1>Welcome {{localStorage.getItem('currentUser') }}</h1> -->
 <button (click)="addUserfunc()" style="margin-top: 2%;margin-bottom: 2%;"> Add New User</button>
 <form [formGroup]="newUserForm" (ngSubmit)="post()" novalidate *ngIf="addUser">
     <h1 style="text-align: center;">Add a New User:</h1>

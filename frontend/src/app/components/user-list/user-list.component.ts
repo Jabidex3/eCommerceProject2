@@ -4,6 +4,7 @@ import { User } from 'src/app/models/User';
 import { UserListCrudService } from 'src/app/services/user-list-crud.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { stringify } from 'querystring';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -14,7 +15,7 @@ export class UserListComponent implements OnInit {
   newUserForm: FormGroup;
 
   users$:Observable<User[]>
-  constructor(private userListCrudService:UserListCrudService) { }
+  constructor(private userListCrudService:UserListCrudService,private router: Router) { }
 
   ngOnInit(): void {
     this.users$ = this.userListCrudService.fetchAll()
@@ -115,7 +116,15 @@ export class UserListComponent implements OnInit {
   
   delete(id:number):void{
     this.userListCrudService.delete(id).subscribe();
-    window.location.reload();
+    var loggedInUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    if(loggedInUser.id==id){
+      sessionStorage.removeItem('currentUser');
+      this.router.navigate([""]);
+    }
+    else{
+      window.location.reload();
+    }
+    
   }
 
   deleteSessionUserInfo():void{

@@ -11,10 +11,10 @@
         <input #pwInp matInput placeholder="password" formControlName="password"/>
     </mat-form-field>
     <br>
-    <button type ="submit">
+    <button style="background-color: blue; color: white;margin-right: 10px;"  type ="submit">
         <span>Log In</span>
     </button>
-    <button type="reset" value="Reset">Cancel</button>
+    <button style="background-color: red; color: white;"  type="reset" value="Reset">Cancel</button>
 </form>
 
 <div #unsuccessLogin *ngIf="div1" style="color: red;">Invalid Login Credentails! Try Again!</div>

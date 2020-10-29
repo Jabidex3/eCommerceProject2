@@ -11,10 +11,11 @@
 <!-- <div id="last"></div>
 <button (click) = "displayPerson()">Click</button> -->
 
+<div style="margin-top: 10px" id="hiName"></div>
 
-
-<h1 style="text-align: center; margin-top: 15px;">User Data:</h1>
-<form [formGroup]="updateUserForm" (ngSubmit)="update()" novalidate>
+<button (click)="showUserDetailfunc()" style="margin-top: 2%;margin-bottom: 2%; background-color: blue; color: white;"> Hide/Show User Details</button>
+<form [formGroup]="updateUserForm" (ngSubmit)="update()" novalidate *ngIf="showDetails">
+    <h1 style="text-align: center; margin-top: 15px;">User Data:</h1>
     <table style="width: 50%; margin: auto; text-align: center;" border=1>
         <tr>
             <th>User Id</th>
@@ -49,8 +50,8 @@
 
 </td>
 <td>
-    <button type ="submit">
-        <span>Update</span>
+    <button style="background-color: blue; color: white;"type ="submit">
+        <span>Update user</span>
     </button>
 </td>
 <td><button mat-icon-button color="warn">

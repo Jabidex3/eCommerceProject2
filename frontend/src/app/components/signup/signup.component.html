@@ -20,9 +20,9 @@
         <mat-label>Role</mat-label>
         <input #roleInp matInput placeholder="user or admin" formControlName="role"/>
     </mat-form-field> -->
-    <button type ="submit">
+    <button  style="background-color: blue; color: white;margin-right: 10px;" type ="submit">
         <span>Register</span>
     </button>
-    <button type="reset" value="Reset">Cancel</button>
+    <button style="background-color: red; color: white;" type="reset" value="Reset">Cancel</button>
 </form>
 <div #unsuccessLogin *ngIf="div1" style="color: red;">Password and Reenter Password values do not match! Try Again!</div>

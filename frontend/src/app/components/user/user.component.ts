@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.loggedInUser$=JSON.parse(sessionStorage.getItem('currentUser'));
     this.updateUserForm = this.createFormGroup();
+    this.userName();
   }
 
   createFormGroup():FormGroup{
@@ -38,6 +39,13 @@ export class UserComponent implements OnInit {
     myContainer.innerHTML = "hello";
   }
 
+  userName():void{
+    console.log(this.loggedInUser$);
+    let myContainer2 = document.getElementById('hiName') as HTMLElement;
+    myContainer2.innerHTML = "Hello <b>" + this.loggedInUser$.email + "</b> !!!";
+  }
+  
+
   delete():void{
     this.userListCrudService.delete(this.loggedInUser$.id).subscribe();
     sessionStorage.removeItem('currentUser');
@@ -53,5 +61,15 @@ export class UserComponent implements OnInit {
    // window.location.reload();
   }
 
- 
+  showDetails:boolean=false;
+  showUserDetailfunc():void{
+    if(this.showDetails==false){
+      this.showDetails = true;
+    }
+    else{
+      this.showDetails=false;
+    }
+  }
+
+  
 }

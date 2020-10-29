@@ -17,9 +17,7 @@
     <button type="reset" value="Reset">Cancel</button>
 </form>
 
-<div>
-    Note: Double Click The Login Button after entering in your credentials in order to login!
-</div>
+<div #unsuccessLogin *ngIf="div1" style="color: red;">Invalid Login Credentails! Try Again!</div>
 <!-- <div>
 Length: {{(user$ | async)?.length}}
 </div>

@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  div1:boolean=false;
   post():void{
     const inpOne = this.registerForm.controls['email'].value.trim()
     const inpTwo = this.registerForm.controls['password'].value.trim()
@@ -44,6 +45,7 @@ export class SignupComponent implements OnInit {
       this.router.navigate(["login"]);
     }
     else{
+      this.div1=true;
       console.log("Invalid Inputs! Try Again!");
       console.log(this.registerForm.value);
     }

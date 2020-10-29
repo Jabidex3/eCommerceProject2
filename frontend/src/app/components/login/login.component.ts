@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  checkUser():void{
+  div1:boolean=false;
+
+  async checkUser():Promise<void>{
     const inpOne = this.loginForm.controls['email'].value.trim()
     const inpTwo = this.loginForm.controls['password'].value.trim()
     if(!inpOne || !inpTwo){
@@ -49,23 +51,34 @@ export class LoginComponent implements OnInit {
     console.log(inpOne);
     console.log(inpTwo);
     this.user$ = this.userListCrudService.checkUser(inpOne,inpTwo);
-
+    
     //  localStorage.setItem('currentUserEmail', inpOne);
     //  localStorage.setItem('currentUserPass', inpTwo);
 
    // this.user$ .forEach(value => console.​log(value));
-   // this.user$ .forEach(value => console.​log([value][0][0]));
-    this.user$ .forEach(value => sessionStorage.setItem('currentUser',JSON.stringify([value][0][0])));
+    this.user$ .forEach(value => console.​log([value][0][0]));
+    this.user$ .forEach(value => console.​log([value][0][1]));
+    this.user$ .forEach(value => console.​log([value][0].length));
+   try{
+    await this.user$ .forEach(value => sessionStorage.setItem('currentUser',JSON.stringify([value][0][0])));
+   }
+   catch{
+    this.div1 = true;
+    console.log('invalid credentials');
+   }
+    
     var tester = JSON.parse(sessionStorage.getItem('currentUser'));
 
     if(tester==null){
       console.log('invalid credentials');
     }
     else if(tester.role.toLowerCase()=="admin"){
+      this.div1 = false;
       this.router.navigate(["admin"]);
       //localStorage.removeItem('currentUser');
     }
     else{
+      this.div1 = false;
       this.router.navigate(["user"]); //localStorage.removeItem('currentUser');
     }
   }

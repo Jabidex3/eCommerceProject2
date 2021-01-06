@@ -2,7 +2,8 @@
 Developed By: Jabid Methun - jabidmethun@gmail.com
 
 ## Description:
-Ecommerce Application created using Angular, Node Js and MySql.
+Ecommerce Application created using Angular, Node Js and MySql.<br>
+Note: This project was used as a base for https://github.com/Jabidex3/Team6-eCommerceProjectPt4
 
 ## Getting Started:
 This application was created using Visual Studio Code and MySql Workbench. In order to run this application you should follow the steps listed below:
